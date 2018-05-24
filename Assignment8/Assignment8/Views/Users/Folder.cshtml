@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Folder";
+}
+
+<center>
+    <h1>@Session["folderName"]</h1>
+</center>
+
+
+<form method="post" action="/Users/saveFile" enctype="multipart/form-data">
+    <input type="file" name="file" required id="file"/><br />
+    <input type="submit" value="Upload" id="submit" />
+</form>

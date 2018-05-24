@@ -1,0 +1,23 @@
+﻿@{
+    List<Entities.FolderDTO> u = (List<Entities.FolderDTO>)Session["userGrid"];
+
+  }      
+
+<table>
+    <tbody>
+
+        @foreach (var obj in u)
+            {
+            <tr>
+               <td>
+                    <form action="~/User/Folder" method="post">
+                        <input type="submit" value="@obj.folderName" />
+                        <input type="hidden" value="@obj.folderId" name="fid" />
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+        </table>

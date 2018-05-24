@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drive", "Assignment8\Drive.csproj", "{3812088C-D977-4E66-A2BE-0E5992FEC66A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{99C3C6B0-21C8-48E1-AFDA-0C3359F24DC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{36293014-41CB-44BE-99BB-E09128FA034B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3812088C-D977-4E66-A2BE-0E5992FEC66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3812088C-D977-4E66-A2BE-0E5992FEC66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3812088C-D977-4E66-A2BE-0E5992FEC66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3812088C-D977-4E66-A2BE-0E5992FEC66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C3C6B0-21C8-48E1-AFDA-0C3359F24DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C3C6B0-21C8-48E1-AFDA-0C3359F24DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C3C6B0-21C8-48E1-AFDA-0C3359F24DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C3C6B0-21C8-48E1-AFDA-0C3359F24DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36293014-41CB-44BE-99BB-E09128FA034B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36293014-41CB-44BE-99BB-E09128FA034B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36293014-41CB-44BE-99BB-E09128FA034B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36293014-41CB-44BE-99BB-E09128FA034B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,196 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+     <script>
+      
+      
+        /*$(window).on("navigate", function (event, data) {
+            var direction = data.state.direction;
+            if (direction == 'back') {
+                alert("back");
+            }
+            if (direction == 'forward') {
+                alert("fwd");
+            }
+        });*/
+        
+        @{ int a = Convert.ToInt32(Session["pid"]);
+            int p= Convert.ToInt32(Session["prevPid"]);
+           
+          }
+
+
+       
+
+        function showPrevFolders() {
+            $.ajax({
+                url: '/Users/detailasjson2?pID=@p', type: "GET", dataType: "json",
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                    content = "<u><h3>Prev Folders</h3></u>";
+                    for (i = 0; i < data.length; i++) {
+                        content += "<a href='/Users/openFolder2?pID=" + data[i].folderId + "'>" + data[i].folderName + "</a> &nbsp &nbsp <a href='/Users/deleteFolder?fID=" + data[i].folderId + "' onclick=\"return confirm('Are sure want to delete?');\"  style='color:red;'>Delete</a> <br>";
+                    }
+                    $('#prevfolders').html(content);
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                    alert(status);
+                    alert(error);
+                }
+            });
+        }
+
+
+
+
+        function showFolders() {
+            $.ajax({
+                url: '/Users/detailasjson?pID=@a', type: "GET", dataType: "json",
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                    content = "<u><h3>Folders</h3></u>";
+                    for (i = 0; i < data.length; i++) {
+                        content += "<a href='/Users/openFolder?pID=" + data[i].folderId + "'>" + data[i].folderName + "</a> &nbsp &nbsp <a href='/Users/deleteFolder?fID=" + data[i].folderId + "' onclick=\"return confirm('Are sure want to delete?');\"  style='color:red;'>Delete</a> <br>";
+                    }
+                    $('#folders').html(content);
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                    alert(status);
+                    alert(error);
+                }
+            });
+        }
+
+        function showFiles() {
+            $.ajax({
+                url: '/Users/getFiles?pID=@a', type: "GET", dataType: "json",
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                    content = "<u><h3>Files</h3></u>";
+                    for (i = 0; i < data.length; i++) {
+                        var icon = " class = \"far fa-file fa-2x\" ";
+                        if (data[i].fileExt == ".jpg" || data[i].fileExt == ".png" || data[i].fileExt == ".jpeg" || data[i].fileExt == ".gif")
+                        {
+                            icon=" class = \"far fa-image fa-2x\" ";
+                        }
+                        if (data[i].fileExt == ".pdf")
+                        {
+                            icon = "class=\"fa fa-file-pdf-o fa-2x\"";
+                        }
+                        if (data[i].fileExt == ".txt")
+                        {
+                            icon = "class=\"fa fa-file-text-o fa-2x\"";
+                        }
+                        if (data[i].fileExt == ".doc" || data[i].fileExt == ".docx")
+                        {
+                            icon = "class=\"fa fa-file-word-o fa-2x\"";
+                        }
+                        if (data[i].fileExt == ".xlsx")
+                        {
+                            icon = "class=\"fa fa-file-excel-o fa-2x\"";
+                        }
+                        if (data[i].fileExt == ".mp4" || data[i].fileExt == ".avi" || data[i].fileExt == ".flv" || data[i].fileExt == ".mpeg" || data[i].fileExt == ".WMV" || data[i].fileExt == ".MOV") {
+                            icon = " class = \"fas fa-video fa-2x\" ";
+                        }
+
+                        content += "<i "+icon+"></i> <a href='/Users/Download?file=" + data[i].fileName + "'>" + data[i].fileName + "</a> &nbsp &nbsp <a href='/Users/deleteFile?fn=" + data[i].fileName + "' onclick=\"return confirm('Are sure want to delete?');\" style='color:red;' >Delete</a> <br>";
+                    }
+                    $('#files').html(content);
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                    alert(status);
+                    alert(error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            showPrevFolders();
+            showFolders();
+            showFiles();
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            buttons: {
+                "OK": function() {
+                    $.ajax({
+                        url: '@Url.Action("NewFolder", "Users")',
+                        type: 'post',
+                        data: $('#myForm').serialize(),
+                        success: function() {
+                            $('#dialog').dialog('close');
+                            showFolders();
+                        }
+                    });
+                }
+            }
+        });
+
+        $('#myButton').click(function () {
+            $('#dialog').dialog('open');
+            //alert("hell");
+
+        });
+
+        $('#submit').click(function () {
+            //check whether browser fully supports all File API
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                //get the file size and file type from file input field
+                var fsize = $('#file')[0].files[0].size;
+
+                if (fsize > 8048576) //do something if file size more than 1 mb (1048576)
+                {
+                    sweetAlert("Oops...", "File size bigger than 8 Mb", "error");
+                    event.preventDefault();
+                    return false;
+                } else {
+                    swal("Uploaded!", "You are good to go!", "success");
+                    return true;
+                }
+            } else {
+                alert("Please upgrade your browser, because your current browser lacks some new features we need!");
+            }
+            return true;
+        });
+
+      
+    });
+    </script>
+    
+</head>
+<body style="background-color:khaki">
+    <div>
+        <button id="myButton">Create New Folder</button>
+        <form method="post" action="/Users/DownloadMeta">
+            <input type="hidden" name="pid" value="@Session["pid"]" />
+            <button style="float:right">Create Meta as PDF</button>
+        </form>
+        <div id="dialog" style="background-color:aliceblue">
+            <form id="myForm">
+               FolderName: <input type="text" name="folderName" />
+            </form>
+        </div>
+        
+        @RenderBody()
+    </div>
+    <div id="prevfolders"></div>
+    <br />
+    <div id="folders"></div>
+    <div id="files"></div>
+</body>
+</html>
