@@ -40,7 +40,7 @@
                     console.log(data);
                     content = "<u><h3>Prev Folders</h3></u>";
                     for (i = 0; i < data.length; i++) {
-                        content += "<a href='/Users/openFolder2?pID=" + data[i].folderId + "'>" + data[i].folderName + "</a> &nbsp &nbsp <a href='/Users/deleteFolder?fID=" + data[i].folderId + "' onclick=\"return confirm('Are sure want to delete?');\"  style='color:red;'>Delete</a> <br>";
+                        content += "<a href='/Users/openFolder2?pID=" + data[i].folderId + "'class=\"far fa-folder-open fa-2x\">" + data[i].folderName + "</a> &nbsp &nbsp <a href='/Users/deleteFolder?fID=" + data[i].folderId + "' onclick=\"return confirm('Are sure want to delete?');\"  style='color:red;' class=\"far fa-trash-alt \">&nbsp Delete</a> <br>";
                     }
                     $('#prevfolders').html(content);
                 },
@@ -63,7 +63,7 @@
                     console.log(data);
                     content = "<u><h3>Folders</h3></u>";
                     for (i = 0; i < data.length; i++) {
-                        content += "<a href='/Users/openFolder?pID=" + data[i].folderId + "'>" + data[i].folderName + "</a> &nbsp &nbsp <a href='/Users/deleteFolder?fID=" + data[i].folderId + "' onclick=\"return confirm('Are sure want to delete?');\"  style='color:red;'>Delete</a> <br>";
+                        content += "<a href='/Users/openFolder?pID=" + data[i].folderId + "' class=\"far fa-folder-open fa-2x\" >" + data[i].folderName + "</a> &nbsp &nbsp <a href='/Users/deleteFolder?fID=" + data[i].folderId + "' onclick=\"return confirm('Are sure want to delete?');\"  style='color:red;' class=\"far fa-trash-alt \">&nbsp Delete</a> <br>";
                     }
                     $('#folders').html(content);
                 },
@@ -108,7 +108,7 @@
                             icon = " class = \"fas fa-video fa-2x\" ";
                         }
 
-                        content += "<i "+icon+"></i> <a href='/Users/Download?file=" + data[i].fileName + "'>" + data[i].fileName + "</a> &nbsp &nbsp <a href='/Users/deleteFile?fn=" + data[i].fileName + "' onclick=\"return confirm('Are sure want to delete?');\" style='color:red;' >Delete</a> <br>";
+                        content += "<i " + icon + "></i> <a href='/Users/Download?file=" + data[i].fileName + "'>" + data[i].fileName + "</a> &nbsp &nbsp <a href='/Users/deleteFile?fn=" + data[i].fileName + "' onclick=\"return confirm('Are sure want to delete?');\" style='color:red;'  class=\"far fa-trash-alt \">&nbsp Delete</a> <br>";
                     }
                     $('#files').html(content);
                 },
@@ -175,7 +175,7 @@
 </head>
 <body style="background-color:khaki">
     <div>
-        <button id="myButton">Create New Folder</button>
+        <button id="myButton">Create New Folder</button> <button style="float:right" onclick="window.location.href = '/Users/Login'">Logout</button>
         <form method="post" action="/Users/DownloadMeta">
             <input type="hidden" name="pid" value="@Session["pid"]" />
             <button style="float:right">Create Meta as PDF</button>
