@@ -1,5 +1,0 @@
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\Entities\bin\Debug\Entities.dll
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\Entities\bin\Debug\Entities.pdb
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\Entities\obj\Debug\Entities.dll
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\Entities\obj\Debug\Entities.pdb
-C:\Users\LINO\documents\visual studio 2015\Projects\Assignment8\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache

@@ -1,7 +1,0 @@
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\DAL\bin\Debug\DAL.dll
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\DAL\bin\Debug\DAL.pdb
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\DAL\bin\Debug\Entities.dll
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\DAL\bin\Debug\Entities.pdb
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\DAL\obj\Debug\DAL.dll
-c:\users\lino\documents\visual studio 2015\Projects\Assignment8\DAL\obj\Debug\DAL.pdb
